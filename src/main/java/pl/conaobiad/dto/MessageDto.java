@@ -1,15 +1,6 @@
 package pl.conaobiad.dto;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import pl.conaobiad.model.Message;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class MessageDto {
 
     private Long id;
@@ -21,5 +12,37 @@ public class MessageDto {
 
     public static Message dtoToMessage(MessageDto messageDto) {
         return new Message(messageDto.getId(), messageDto.getMessage());
+    }
+
+    public MessageDto(Long id, String message) {
+        this.id = id;
+        this.message = message;
+    }
+
+    public MessageDto() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "MessageDto{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                '}';
     }
 }

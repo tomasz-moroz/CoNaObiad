@@ -1,7 +1,5 @@
 package pl.conaobiad.model;
 
-import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -26,11 +24,6 @@ import java.util.ArrayList;
                 query = " SELECT distinct m.name FROM Category u, Meal m JOIN u.mealList r WHERE r.id=u.id")
 })
 
-@AllArgsConstructor
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
 @Entity
 @Table(name = "Category")
 public class Category {
@@ -53,4 +46,49 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<Meal> mealList = new ArrayList<>();
 
+    public Category(Long id, @NotNull String name, List<Meal> mealList) {
+        this.id = id;
+        this.name = name;
+        this.mealList = mealList;
+    }
+
+    public Category(@NotNull String name) {
+        this.name = name;
+    }
+
+    public Category() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Meal> getMealList() {
+        return mealList;
+    }
+
+    public void setMealList(List<Meal> mealList) {
+        this.mealList = mealList;
+    }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", mealList=" + mealList +
+                '}';
+    }
 }

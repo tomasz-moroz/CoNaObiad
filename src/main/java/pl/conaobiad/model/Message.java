@@ -1,7 +1,5 @@
 package pl.conaobiad.model;
 
-import lombok.*;
-
 import javax.persistence.*;
 
 @NamedQuery(
@@ -9,11 +7,6 @@ import javax.persistence.*;
         query = "SELECT m FROM Message m"
 )
 
-@AllArgsConstructor
-@Getter
-@Setter
-@NoArgsConstructor
-@ToString
 @Table
 @Entity
 public class Message {
@@ -26,4 +19,36 @@ public class Message {
 
     @Column
     private String message;
+
+    public Message(Long id, String message) {
+        this.id = id;
+        this.message = message;
+    }
+
+    public Message() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                '}';
+    }
 }

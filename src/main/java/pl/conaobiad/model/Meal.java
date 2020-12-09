@@ -1,7 +1,5 @@
 package pl.conaobiad.model;
 
-import lombok.*;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -15,12 +13,6 @@ import java.util.List;
                 name = Meal.GET_MEAL_BY_NAME,
                 query = "SELECT m FROM Meal m WHERE m.name =:name")
 })
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 
 @Entity
 @Table
@@ -78,5 +70,135 @@ public class Meal {
     @NotNull
     private boolean isApproved;
 
+    public Meal(Long id, @NotNull String name, Category category, @NotNull String countryOfOrigin, @NotNull String recipe, String imageUrl, String youtubeLink, String tagsList, List<Ingredient> ingredientsList, String source, @NotNull boolean isCustom, @NotNull boolean isApproved) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.countryOfOrigin = countryOfOrigin;
+        this.recipe = recipe;
+        this.imageUrl = imageUrl;
+        this.youtubeLink = youtubeLink;
+        this.tagsList = tagsList;
+        this.ingredientsList = ingredientsList;
+        this.source = source;
+        this.isCustom = isCustom;
+        this.isApproved = isApproved;
+    }
 
+    public Meal() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public String getCountryOfOrigin() {
+        return countryOfOrigin;
+    }
+
+    public void setCountryOfOrigin(String countryOfOrigin) {
+        this.countryOfOrigin = countryOfOrigin;
+    }
+
+    public String getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getYoutubeLink() {
+        return youtubeLink;
+    }
+
+    public void setYoutubeLink(String youtubeLink) {
+        this.youtubeLink = youtubeLink;
+    }
+
+    public String getTagsList() {
+        return tagsList;
+    }
+
+    public void setTagsList(String tagsList) {
+        this.tagsList = tagsList;
+    }
+
+    public List<Ingredient> getIngredientsList() {
+        return ingredientsList;
+    }
+
+    public void setIngredientsList(List<Ingredient> ingredientsList) {
+        this.ingredientsList = ingredientsList;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public boolean isCustom() {
+        return isCustom;
+    }
+
+    public void setCustom(boolean custom) {
+        isCustom = custom;
+    }
+
+    public boolean isApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
+    }
+
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category=" + category +
+                ", countryOfOrigin='" + countryOfOrigin + '\'' +
+                ", recipe='" + recipe + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", youtubeLink='" + youtubeLink + '\'' +
+                ", tagsList='" + tagsList + '\'' +
+                ", ingredientsList=" + ingredientsList +
+                ", source='" + source + '\'' +
+                ", isCustom=" + isCustom +
+                ", isApproved=" + isApproved +
+                '}';
+    }
 }

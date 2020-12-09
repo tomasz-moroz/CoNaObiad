@@ -1,15 +1,7 @@
 package pl.conaobiad.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import pl.conaobiad.model.Ingredient;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class IngredientDto {
 
     private Long id;
@@ -29,5 +21,47 @@ public class IngredientDto {
         ingredientDto.setName(ingredient.getName());
         ingredientDto.setMeasure(ingredient.getMeasure());
         return ingredientDto;
+    }
+
+    public IngredientDto() {
+    }
+
+    public IngredientDto(Long id, String name, String measure) {
+        this.id = id;
+        this.name = name;
+        this.measure = measure;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMeasure() {
+        return measure;
+    }
+
+    public void setMeasure(String measure) {
+        this.measure = measure;
+    }
+
+    @Override
+    public String toString() {
+        return "IngredientDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", measure='" + measure + '\'' +
+                '}';
     }
 }

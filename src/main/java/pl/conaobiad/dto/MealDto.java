@@ -1,21 +1,11 @@
 package pl.conaobiad.dto;
 
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import pl.conaobiad.model.Ingredient;
 import pl.conaobiad.model.Meal;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class MealDto {
 
     private Long id;
@@ -50,8 +40,8 @@ public class MealDto {
         });
 
         meal.setSource(mealDto.getSource());
-        meal.setCustom(mealDto.getIsCustom());
-        meal.setApproved(mealDto.getIsApproved());
+        meal.setCustom(mealDto.getCustom());
+        meal.setApproved(mealDto.getApproved());
 
         return meal;
     }
@@ -76,10 +66,141 @@ public class MealDto {
         mealDto.setIngredientList(ingredientDtoList);
 
         mealDto.setSource(meal.getSource());
-        mealDto.setIsCustom(meal.isCustom());
-        mealDto.setIsApproved(meal.isApproved());
+        mealDto.setCustom(meal.isCustom());
+        mealDto.setApproved(meal.isApproved());
 
         return  mealDto;
     }
 
+    public MealDto(Long id, String name, CategoryDto category, String countryOfOrigin, String recipe, String imageUrl, String youtubeLink, String tagsList, List<IngredientDto> ingredientList, String source, Boolean isCustom, Boolean isApproved) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.countryOfOrigin = countryOfOrigin;
+        this.recipe = recipe;
+        this.imageUrl = imageUrl;
+        this.youtubeLink = youtubeLink;
+        this.tagsList = tagsList;
+        this.ingredientList = ingredientList;
+        this.source = source;
+        this.isCustom = isCustom;
+        this.isApproved = isApproved;
+    }
+
+    public MealDto() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public CategoryDto getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryDto category) {
+        this.category = category;
+    }
+
+    public String getCountryOfOrigin() {
+        return countryOfOrigin;
+    }
+
+    public void setCountryOfOrigin(String countryOfOrigin) {
+        this.countryOfOrigin = countryOfOrigin;
+    }
+
+    public String getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(String recipe) {
+        this.recipe = recipe;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getYoutubeLink() {
+        return youtubeLink;
+    }
+
+    public void setYoutubeLink(String youtubeLink) {
+        this.youtubeLink = youtubeLink;
+    }
+
+    public String getTagsList() {
+        return tagsList;
+    }
+
+    public void setTagsList(String tagsList) {
+        this.tagsList = tagsList;
+    }
+
+    public List<IngredientDto> getIngredientList() {
+        return ingredientList;
+    }
+
+    public void setIngredientList(List<IngredientDto> ingredientList) {
+        this.ingredientList = ingredientList;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public Boolean getCustom() {
+        return isCustom;
+    }
+
+    public void setCustom(Boolean custom) {
+        isCustom = custom;
+    }
+
+    public Boolean getApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(Boolean approved) {
+        isApproved = approved;
+    }
+
+    @Override
+    public String toString() {
+        return "MealDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", category=" + category +
+                ", countryOfOrigin='" + countryOfOrigin + '\'' +
+                ", recipe='" + recipe + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", youtubeLink='" + youtubeLink + '\'' +
+                ", tagsList='" + tagsList + '\'' +
+                ", ingredientList=" + ingredientList +
+                ", source='" + source + '\'' +
+                ", isCustom=" + isCustom +
+                ", isApproved=" + isApproved +
+                '}';
+    }
 }
