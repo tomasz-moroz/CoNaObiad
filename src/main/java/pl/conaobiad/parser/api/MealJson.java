@@ -82,7 +82,7 @@ public class MealApi {
     @JsonProperty("strMealThumb")
     private String strMealThumb;
     @JsonProperty("strTags")
-    private Object strTags;
+    private String strTags;
     @JsonProperty("strYoutube")
     private String strYoutube;
     @JsonProperty("strIngredient1")
