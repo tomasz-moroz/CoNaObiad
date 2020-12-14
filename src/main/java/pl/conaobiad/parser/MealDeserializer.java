@@ -58,4 +58,5 @@ public class MealDeserializer extends JsonDeserializer<MealApi> {
         logger.info("Deserialization data from file");
         return  mealApi;
     }
+
 }

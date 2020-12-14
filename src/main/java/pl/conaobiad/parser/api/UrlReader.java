@@ -11,14 +11,14 @@ import java.util.ArrayList;
 
 public class UrlReader {
 
-    public static MealsApi readerFromUrl(URL url) throws IOException {
+    public static MealsJson readerFromUrl(URL url) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        MealsApi mealApi = objectMapper.readValue(url, MealsApi.class);
+        MealsJson mealApi = objectMapper.readValue(url, MealsJson.class);
         return mealApi;
     }
-    public static MealsApi readerFromFile() throws IOException {
+    public static MealsJson readerFromFile() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        MealsApi mealApi = objectMapper.readValue(new File("src/main/resources/Data/a.json"), MealsApi.class);
+        MealsJson mealApi = objectMapper.readValue(new File("src/main/resources/Data/a.json"), MealsJson.class);
         return mealApi;
     }
 
@@ -34,20 +34,20 @@ public class UrlReader {
         return urls;
     }
 
-    public static List<MealApi> mealApiListFromUrl() throws IOException {
-        List<MealApi> mealApiList = new ArrayList<>();
+    public static List<MealJson> mealApiListFromUrl() throws IOException {
+        List<MealJson> mealApiList = new ArrayList<>();
         for (URL url : urlBuilder()) {
             readerFromUrl(url);
-                for (MealApi meal : readerFromUrl(url).getMeals()) {
+                for (MealJson meal : readerFromUrl(url).getMeals()) {
                     mealApiList.add(meal);
                 }
         }
         return mealApiList;
     }
 
-    public static List<MealApi> mealApiListFromFile() throws IOException {
-        List<MealApi> mealApiList = new ArrayList<>();
-        for (MealApi meal : readerFromFile().getMeals()) {
+    public static List<MealJson> mealApiListFromFile() throws IOException {
+        List<MealJson> mealApiList = new ArrayList<>();
+        for (MealJson meal : readerFromFile().getMeals()) {
             mealApiList.add(meal);
         }
         return mealApiList;
@@ -58,6 +58,7 @@ public class UrlReader {
         for (int i = 0; i < mealApiListFromFile().size(); i++) {
             System.out.println(
                     mealApiListFromFile().get(i).getStrMeal()+"\n");
+            System.out.println(MealApiMapper.mapIngredients(mealApiListFromFile().get(i)));
         }
     }
 }

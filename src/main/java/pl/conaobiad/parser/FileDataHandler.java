@@ -11,8 +11,6 @@ import java.io.IOException;
 @RequestScoped
 public class FileDataHandler {
 
-    private Logger logger = LoggerFactory.getLogger(getClass().getName());
-
     @Inject
     FileUploadService fileUploadService;
 
@@ -20,7 +18,7 @@ public class FileDataHandler {
     FileParserService fileParserService;
 
     public <T> Object dataUploadHandler(Part partFile) throws IOException, RecipeUploadedFileNotFound {
-        logger.info("File was parsed");
+
         return fileParserService.parseDataToDatabase(fileUploadService.uploadFile(partFile));
     }
 }

@@ -6,6 +6,7 @@ import pl.conaobiad.model.Category;
 import pl.conaobiad.model.Meal;
 import pl.conaobiad.parser.MealApi;
 
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 

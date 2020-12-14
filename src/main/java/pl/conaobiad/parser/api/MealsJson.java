@@ -16,20 +16,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
     "meals"
 })
-public class MealsApi {
+public class MealsJson {
 
     @JsonProperty("meals")
-    private List<MealApi> meals = null;
+    private List<MealJson> meals = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("meals")
-    public List<MealApi> getMeals() {
+    public List<MealJson> getMeals() {
         return meals;
     }
 
     @JsonProperty("meals")
-    public void setMeals(List<MealApi> meals) {
+    public void setMeals(List<MealJson> meals) {
         this.meals = meals;
     }
 

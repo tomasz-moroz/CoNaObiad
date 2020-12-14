@@ -65,7 +65,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "strSource",
     "dateModified"
 })
-public class MealApi {
+public class MealJson {
 
     @JsonProperty("idMeal")
     private String idMeal;
@@ -248,7 +248,7 @@ public class MealApi {
     }
 
     @JsonProperty("strTags")
-    public void setStrTags(Object strTags) {
+    public void setStrTags(String strTags) {
         this.strTags = strTags;
     }
 
