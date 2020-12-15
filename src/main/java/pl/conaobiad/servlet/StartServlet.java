@@ -24,7 +24,7 @@ public class StartServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         Map<String, Object> root = new HashMap<>();
 
-        Template template = templateProvider.getTemplate(getServletContext(), "json-upload.ftlh");
+        Template template = templateProvider.getTemplate(getServletContext(), "upload-json-object.ftlh");
         Writer out = response.getWriter();
 
         try {

@@ -1,15 +1,11 @@
 package pl.conaobiad.parser.api;
 
-
-import com.fasterxml.jackson.databind.JsonNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.conaobiad.model.Ingredient;
 
-import java.lang.reflect.Method;
 import java.util.*;
 
-public class MealApiMapper  {
+public class MealApiIngredientMapper {
 
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
