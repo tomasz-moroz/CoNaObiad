@@ -1,11 +1,12 @@
-package pl.conaobiad.parser.api;
+package pl.conaobiad.parser.api.mapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.conaobiad.parser.api.MealJson;
 
 import java.util.*;
 
-public class MealApiIngredientMapper {
+public class MealJsonIngredientMapper {
 
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
 
