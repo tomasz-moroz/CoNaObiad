@@ -11,6 +11,17 @@ import java.util.ArrayList;
 
 public class UrlReader {
 
+    public List<MealJson> mealApiListFromUrl() throws IOException {
+        List<MealJson> mealApiList = new ArrayList<>();
+        for (URL url : urlBuilder()) {
+            readerFromUrl(url);
+            for (MealJson meal : readerFromUrl(url).getMeals()) {
+                mealApiList.add(meal);
+            }
+        }
+        return mealApiList;
+    }
+
     public MealsJson readerFromUrl(URL url) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         MealsJson mealApi = objectMapper.readValue(url, MealsJson.class);
@@ -30,16 +41,7 @@ public class UrlReader {
         return urls;
     }
 
-    public List<MealJson> mealApiListFromUrl() throws IOException {
-        List<MealJson> mealApiList = new ArrayList<>();
-        for (URL url : urlBuilder()) {
-            readerFromUrl(url);
-                for (MealJson meal : readerFromUrl(url).getMeals()) {
-                    mealApiList.add(meal);
-                }
-        }
-        return mealApiList;
-    }
+
 
 }
 /*    String chars[] = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};*/

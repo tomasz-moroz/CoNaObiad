@@ -2,13 +2,20 @@ package pl.conaobiad.parser.api.mapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.conaobiad.model.Ingredient;
 import pl.conaobiad.parser.api.MealJson;
 
+import javax.ejb.Stateless;
 import java.util.*;
 
+@Stateless
 public class MealJsonIngredientMapper {
 
     private Logger logger = LoggerFactory.getLogger(getClass().getName());
+
+    public List<Ingredient> ingredientsMapper(MealJson mealJson){
+        return mapIngredients(mapIngredients(mealJson));
+    }
 
     public static Map<String, String> mapIngredients (MealJson mealApi){
         Map<String, String> mapOfIngredients = new HashMap<>();
@@ -39,5 +46,18 @@ public class MealJsonIngredientMapper {
         while (mapOfIngredients.values().remove(""));
 
         return mapOfIngredients;
+    }
+    public List<Ingredient> mapIngredients(Map<String, String> mapIngredients) {
+
+        List<Ingredient> ingredients = new ArrayList<>();
+
+        mapIngredients.entrySet().forEach(i -> {
+            Ingredient ingredient = new Ingredient();
+            ingredient.setName(i.getKey());
+            ingredient.setMeasure(i.getValue());
+            ingredients.add(ingredient);
+        });
+        logger.info("Ingredients {} added.", mapIngredients);
+        return ingredients;
     }
 }

@@ -2,9 +2,8 @@ package pl.conaobiad.servlet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pl.conaobiad.freemarker.TemplateProvider;
-import pl.conaobiad.parser.api.FileReader;
-import pl.conaobiad.parser.api.UrlReader;
+import pl.conaobiad.parser.api.MealUploadToDatabase;
+
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -20,11 +19,7 @@ import java.io.IOException;
 public class UploadJsonObjectServlet extends HttpServlet {
 
     @Inject
-    TemplateProvider templateProvider;
-    @Inject
-    FileReader fileReader;
-    @Inject
-    UrlReader urlReader;
+    MealUploadToDatabase mealUploadToDatabase;
 
     Logger logger = LoggerFactory.getLogger(pl.conaobiad.servlet.UploadJsonObjectServlet.class);
 
@@ -33,9 +28,11 @@ public class UploadJsonObjectServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         if (request.getParameter("upload").equals("Upload from Url")) {
-            urlReader.mealApiListFromUrl();
+            mealUploadToDatabase.uploadFromUrl();
+            logger.info("The file was successfully loaded from the url.");
         } else if(request.getParameter("upload").equals("Upload from file .json")){
-            fileReader.mealApiListFromFile();
+            mealUploadToDatabase.uploadFromFile();
+            logger.info("The file was successfully loaded from the json file.");
         }
     }
 }
