@@ -54,4 +54,9 @@ public class MealDao {
         TypedQuery<Meal>query = entityManager.createNamedQuery(Meal.GET_MEAL_LIST, Meal.class);
         return query.getResultList();
     }
+
+    public static void main(String[] args) {
+        MealDao mealDao = new MealDao();
+        mealDao.addMeal(new Meal("kasztan"));
+    }
 }

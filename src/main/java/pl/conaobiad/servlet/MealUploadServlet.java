@@ -26,7 +26,7 @@ public class MealUploadServlet extends HttpServlet {
 
     Logger logger = LoggerFactory.getLogger(pl.conaobiad.servlet.MealUploadServlet.class);
 
-    @Override
+/*    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Part jsonFile = request.getPart("meals");
         String fileUrl = "";
@@ -38,6 +38,6 @@ public class MealUploadServlet extends HttpServlet {
         Meal meal = new Meal();
         meal.setImageUrl(fileUrl);
 
-    }
+    }*/
 
 }

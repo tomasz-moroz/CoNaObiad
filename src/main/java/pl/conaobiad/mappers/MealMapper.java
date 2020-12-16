@@ -20,8 +20,6 @@ public class MealMapper {
     public Meal mapMeals(MealApi mealApi, Category category) {
 
         Meal meal = new Meal();
-
-        meal.setId(mealApi.getId());
         meal.setName(mealApi.getName());
         meal.setCategory(category);
         meal.setCountryOfOrigin(mealApi.getCountryOfOrigin());

@@ -1,22 +1,25 @@
 package pl.conaobiad.parser.api.mapper;
 
 import pl.conaobiad.model.Meal;
+import pl.conaobiad.parser.api.FileReader;
 import pl.conaobiad.parser.api.MealJson;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
+import java.io.IOException;
 import java.util.*;
 
 @Stateless
 public class MealJsonMapper {
 
-    @Inject
+    @EJB
+    static
     MealJsonIngredientMapper mealJsonIngredientMapper;
 
-    @Inject
-    CategoryJsonMapper categoryJsonMapper;
+    @EJB
+    static CategoryJsonMapper categoryJsonMapper;
 
-    public List<Meal> mappedMealsFromMealJsonList(List<MealJson>mealJsonList){
+    public static List<Meal> mappedMealsFromMealJsonList(List<MealJson>mealJsonList){
         List<Meal>meals = new ArrayList<>();
         for (MealJson jsonToMeal:mealJsonList) {
             meals.add(mapMeals(jsonToMeal));
@@ -24,7 +27,7 @@ public class MealJsonMapper {
         return meals;
     }
 
-    public Meal mapMeals(MealJson mealJson) {
+    public static Meal mapMeals(MealJson mealJson) {
 
         Meal meal = new Meal();
 
@@ -37,7 +40,16 @@ public class MealJsonMapper {
         meal.setYoutubeLink(mealJson.getStrYoutube());
         meal.setTagsList((String) mealJson.getStrTags());
         meal.setIngredientsList(mealJsonIngredientMapper.ingredientsMapper(mealJson));
-
+        meal.setSource(mealJson.getStrSource());
+        meal.setCustom(false);
+        meal.setApproved(true);
         return meal;
+    }
+
+    public static void main(String[] args) throws IOException {
+        FileReader fileReader = new FileReader();
+        for (Meal meal:mappedMealsFromMealJsonList(fileReader.mealApiListFromFile())) {
+            System.out.println(meal.getName());
+        }
     }
 }

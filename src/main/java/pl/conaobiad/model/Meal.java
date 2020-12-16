@@ -27,7 +27,6 @@ public class Meal {
     private Long id;
 
     @Column(name = "name", unique = true, length = 100)
-    @NotNull
     private String name;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -35,11 +34,9 @@ public class Meal {
     private Category category;
 
     @Column(name = "Country_of_origin")
-    @NotNull
     private String countryOfOrigin;
 
     @Column(name = "recipe", length = 5000)
-    @NotNull
     private String recipe;
 
     @Column(length = 2000)
@@ -63,15 +60,14 @@ public class Meal {
     private String source;
 
     @Column(name = "is_custom")
-    @NotNull
+
     private boolean isCustom;
 
     @Column(name = "is_approved")
-    @NotNull
+
     private boolean isApproved;
 
-    public Meal(Long id, @NotNull String name, Category category, @NotNull String countryOfOrigin, @NotNull String recipe, String imageUrl, String youtubeLink, String tagsList, List<Ingredient> ingredientsList, String source, @NotNull boolean isCustom, @NotNull boolean isApproved) {
-        this.id = id;
+    public Meal(String name, Category category, String countryOfOrigin, String recipe, String imageUrl, String youtubeLink, String tagsList, List<Ingredient> ingredientsList, String source, boolean isCustom, boolean isApproved) {
         this.name = name;
         this.category = category;
         this.countryOfOrigin = countryOfOrigin;
@@ -83,6 +79,10 @@ public class Meal {
         this.source = source;
         this.isCustom = isCustom;
         this.isApproved = isApproved;
+    }
+
+    public Meal(String name) {
+        this.name = name;
     }
 
     public Meal() {

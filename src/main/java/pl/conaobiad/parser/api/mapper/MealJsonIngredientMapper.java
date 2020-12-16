@@ -3,43 +3,45 @@ package pl.conaobiad.parser.api.mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.conaobiad.model.Ingredient;
+import pl.conaobiad.parser.api.FileReader;
 import pl.conaobiad.parser.api.MealJson;
 
 import javax.ejb.Stateless;
+import java.io.IOException;
 import java.util.*;
 
 @Stateless
 public class MealJsonIngredientMapper {
 
-    private Logger logger = LoggerFactory.getLogger(getClass().getName());
+    private static Logger logger = LoggerFactory.getLogger(MealJsonIngredientMapper.class.getName());
 
-    public List<Ingredient> ingredientsMapper(MealJson mealJson){
+    public static List<Ingredient> ingredientsMapper(MealJson mealJson){
         return mapIngredients(mapIngredients(mealJson));
     }
 
-    public static Map<String, String> mapIngredients (MealJson mealApi){
+    public static Map<String, String> mapIngredients (MealJson mealJson){
         Map<String, String> mapOfIngredients = new HashMap<>();
 
-        mapOfIngredients.put(mealApi.getStrIngredient1(), mealApi.getStrMeasure1());
-        mapOfIngredients.put(mealApi.getStrIngredient2(), mealApi.getStrMeasure2());
-        mapOfIngredients.put(mealApi.getStrIngredient3(), mealApi.getStrMeasure3());
-        mapOfIngredients.put(mealApi.getStrIngredient4(), mealApi.getStrMeasure4());
-        mapOfIngredients.put(mealApi.getStrIngredient5(), mealApi.getStrMeasure5());
-        mapOfIngredients.put(mealApi.getStrIngredient6(), mealApi.getStrMeasure6());
-        mapOfIngredients.put(mealApi.getStrIngredient7(), mealApi.getStrMeasure7());
-        mapOfIngredients.put(mealApi.getStrIngredient8(), mealApi.getStrMeasure8());
-        mapOfIngredients.put(mealApi.getStrIngredient9(), mealApi.getStrMeasure9());
-        mapOfIngredients.put(mealApi.getStrIngredient10(), mealApi.getStrMeasure10());
-        mapOfIngredients.put(mealApi.getStrIngredient11(), mealApi.getStrMeasure11());
-        mapOfIngredients.put(mealApi.getStrIngredient12(), mealApi.getStrMeasure12());
-        mapOfIngredients.put(mealApi.getStrIngredient13(), mealApi.getStrMeasure13());
-        mapOfIngredients.put(mealApi.getStrIngredient14(), mealApi.getStrMeasure14());
-        mapOfIngredients.put(mealApi.getStrIngredient15(), mealApi.getStrMeasure15());
-        mapOfIngredients.put(mealApi.getStrIngredient16(), mealApi.getStrMeasure16());
-        mapOfIngredients.put(mealApi.getStrIngredient17(), mealApi.getStrMeasure17());
-        mapOfIngredients.put(mealApi.getStrIngredient18(), mealApi.getStrMeasure18());
-        mapOfIngredients.put(mealApi.getStrIngredient19(), mealApi.getStrMeasure19());
-        mapOfIngredients.put(mealApi.getStrIngredient20(), mealApi.getStrMeasure20());
+        mapOfIngredients.put(mealJson.getStrIngredient1(), mealJson.getStrMeasure1());
+        mapOfIngredients.put(mealJson.getStrIngredient2(), mealJson.getStrMeasure2());
+        mapOfIngredients.put(mealJson.getStrIngredient3(), mealJson.getStrMeasure3());
+        mapOfIngredients.put(mealJson.getStrIngredient4(), mealJson.getStrMeasure4());
+        mapOfIngredients.put(mealJson.getStrIngredient5(), mealJson.getStrMeasure5());
+        mapOfIngredients.put(mealJson.getStrIngredient6(), mealJson.getStrMeasure6());
+        mapOfIngredients.put(mealJson.getStrIngredient7(), mealJson.getStrMeasure7());
+        mapOfIngredients.put(mealJson.getStrIngredient8(), mealJson.getStrMeasure8());
+        mapOfIngredients.put(mealJson.getStrIngredient9(), mealJson.getStrMeasure9());
+        mapOfIngredients.put(mealJson.getStrIngredient10(), mealJson.getStrMeasure10());
+        mapOfIngredients.put(mealJson.getStrIngredient11(), mealJson.getStrMeasure11());
+        mapOfIngredients.put(mealJson.getStrIngredient12(), mealJson.getStrMeasure12());
+        mapOfIngredients.put(mealJson.getStrIngredient13(), mealJson.getStrMeasure13());
+        mapOfIngredients.put(mealJson.getStrIngredient14(), mealJson.getStrMeasure14());
+        mapOfIngredients.put(mealJson.getStrIngredient15(), mealJson.getStrMeasure15());
+        mapOfIngredients.put(mealJson.getStrIngredient16(), mealJson.getStrMeasure16());
+        mapOfIngredients.put(mealJson.getStrIngredient17(), mealJson.getStrMeasure17());
+        mapOfIngredients.put(mealJson.getStrIngredient18(), mealJson.getStrMeasure18());
+        mapOfIngredients.put(mealJson.getStrIngredient19(), mealJson.getStrMeasure19());
+        mapOfIngredients.put(mealJson.getStrIngredient20(), mealJson.getStrMeasure20());
 
         while (mapOfIngredients.values().remove(null));
         while (mapOfIngredients.values().remove(" "));
@@ -47,7 +49,7 @@ public class MealJsonIngredientMapper {
 
         return mapOfIngredients;
     }
-    public List<Ingredient> mapIngredients(Map<String, String> mapIngredients) {
+    public static List<Ingredient> mapIngredients(Map<String, String> mapIngredients) {
 
         List<Ingredient> ingredients = new ArrayList<>();
 
