@@ -17,8 +17,8 @@ public class FileDataHandler {
     @Inject
     FileParserService fileParserService;
 
-    public <T> Object dataUploadHandler(Part partFile) throws IOException, RecipeUploadedFileNotFound {
+   /* public <T> Object dataUploadHandler(Part partFile) throws IOException, RecipeUploadedFileNotFound {
 
         return fileParserService.parseDataToDatabase(fileUploadService.uploadFile(partFile));
-    }
+    }*/
 }

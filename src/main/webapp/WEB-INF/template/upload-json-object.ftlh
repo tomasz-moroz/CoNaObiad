@@ -5,7 +5,7 @@
     <title>Upload</title>
 </head>
 <body>
-<form action="json-upload" method="post">
+<form action="upload" method="post">
     <button style="background-color: blue;" type="button">
         I am a blue button! Click me!
     </button>

@@ -2,13 +2,14 @@ package pl.conaobiad.parser.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.ejb.Stateless;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.List;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-
+@Stateless
 public class UrlReader {
 
     public List<MealJson> mealApiListFromUrl() throws IOException {
