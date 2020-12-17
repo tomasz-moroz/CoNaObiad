@@ -2,6 +2,7 @@ package pl.conaobiad.parser.api.mapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.conaobiad.dto.CategoryDto;
 import pl.conaobiad.model.Category;
 import pl.conaobiad.parser.api.FileReader;
 import pl.conaobiad.parser.api.MealJson;

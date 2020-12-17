@@ -2,6 +2,7 @@ package pl.conaobiad.servlet;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.conaobiad.dao.MealDao;
 import pl.conaobiad.parser.api.MealUploadToDatabase;
 
 
@@ -20,8 +21,9 @@ public class UploadJsonObjectServlet extends HttpServlet {
 
     @Inject
     MealUploadToDatabase mealUploadToDatabase;
+    @Inject
+    MealDao mealDao;
 
-    Logger logger = LoggerFactory.getLogger(pl.conaobiad.servlet.UploadJsonObjectServlet.class);
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,10 +31,10 @@ public class UploadJsonObjectServlet extends HttpServlet {
 
         if (request.getParameter("upload").equals("Upload from Url")) {
             mealUploadToDatabase.uploadFromUrl();
-            logger.info("The file was successfully loaded from the url.");
-        } else if(request.getParameter("upload").equals("Upload from file .json")){
-            mealUploadToDatabase.uploadFromFile();
-            logger.info("The file was successfully loaded from the json file.");
+
+        } else if (request.getParameter("upload").equals("Upload from file .json")) {
+            mealDao.uploadFromFile();
+
         }
     }
 }

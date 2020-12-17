@@ -2,12 +2,12 @@ package pl.conaobiad.parser.api.mapper;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.conaobiad.dto.IngredientDto;
+
 import pl.conaobiad.model.Ingredient;
-import pl.conaobiad.parser.api.FileReader;
 import pl.conaobiad.parser.api.MealJson;
 
 import javax.ejb.Stateless;
-import java.io.IOException;
 import java.util.*;
 
 @Stateless
