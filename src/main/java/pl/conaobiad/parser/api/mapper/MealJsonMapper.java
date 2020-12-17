@@ -1,5 +1,6 @@
 package pl.conaobiad.parser.api.mapper;
 
+import pl.conaobiad.dto.MealDto;
 import pl.conaobiad.model.Meal;
 import pl.conaobiad.parser.api.FileReader;
 import pl.conaobiad.parser.api.MealJson;

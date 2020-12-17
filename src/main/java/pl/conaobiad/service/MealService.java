@@ -9,11 +9,11 @@ import pl.conaobiad.model.Meal;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Transactional
+
 @RequestScoped
 public class MealService {
 
@@ -26,14 +26,9 @@ public class MealService {
     MessageService messageService;
 
     public MealDto addMeal(MealDto mealDto){
-        if(mealDao.getMealList().stream().noneMatch(meal -> meal.getName().equals(mealDto.getName()))){
-            Meal meal = MealDto.dtoToMeal(mealDto);
-            messageService.leaveMessage(1L, "Meal was added");
-            return MealDto.mealToDto(mealDao.addMeal(meal));
-        } else {
-            messageService.leaveMessage(1L, "Nothing has happened, please change name.");
-            return null;
-        }
+        Meal meal = mealDto.dtoToMeal(mealDto);
+        mealDao.addMeal(meal);
+        return  mealDto.mealToDto(meal);
     }
 
     public void editMeal(MealDto mealDto) {

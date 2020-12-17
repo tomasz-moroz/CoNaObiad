@@ -90,12 +90,6 @@ public class MealDto {
     public MealDto() {
     }
 
-    public MealDto(String name, String countryOfOrigin, String recipe) {
-        this.name = name;
-        this.countryOfOrigin = countryOfOrigin;
-        this.recipe = recipe;
-    }
-
     public Long getId() {
         return id;
     }
